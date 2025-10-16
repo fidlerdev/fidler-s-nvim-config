@@ -4,8 +4,13 @@ vim.keymap.set({ 'n', 't' }, '<leader>ld', '<Cmd>lua LazyDocker.toggle()<CR>')
 
 
 ----------------------------LSP----------------------------------------------------------------
-vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+
+-- Показать LSP ошибки на текущей строке
+vim.keymap.set("n", "<M-k>", function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+end, { desc = "Показать LSP ошибки на текущей строке" })
 -----------------------------------------------------------------------------------------------
 
 
